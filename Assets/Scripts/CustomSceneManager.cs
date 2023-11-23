@@ -9,6 +9,10 @@ public class CustomSceneManager : MonoBehaviour
     {
         SceneManager.LoadScene("Level1");
     }
+    public void LoadMenu()
+    {
+        SceneManager.LoadScene("Menu");
+    }
      public void LoadLevel2()
     {
         SceneManager.LoadScene("Level2");
