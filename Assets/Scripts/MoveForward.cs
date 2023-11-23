@@ -7,6 +7,7 @@ public class MoveForward : MonoBehaviour
    public float turnSpeed = 30.0f;
      public float HorizontalInput; 
      public float forwardInput;
+     private float accelerate = 1.0f;
     //adding speed variable
     public float speed = 5.0f;
     // Start is called before the first frame update
