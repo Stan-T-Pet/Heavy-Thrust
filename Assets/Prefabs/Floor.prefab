@@ -791,6 +791,7 @@ GameObject:
   - component: {fileID: 3069842480605654293}
   - component: {fileID: 3069842480605654294}
   - component: {fileID: 3069842480605654295}
+  - component: {fileID: 771701519}
   m_Layer: 0
   m_Name: Floor
   m_TagString: Untagged
@@ -878,6 +879,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!64 &771701519
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3069842480605654280}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &3384373241174169453
 GameObject:
   m_ObjectHideFlags: 0
@@ -1060,6 +1075,7 @@ GameObject:
   - component: {fileID: 7534627370588165932}
   - component: {fileID: 5981204699287589193}
   - component: {fileID: 2299190307865663233}
+  - component: {fileID: 768648957}
   m_Layer: 0
   m_Name: ProgressPlatform
   m_TagString: Untagged
@@ -1075,7 +1091,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9145352645195270346}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 28.03716, y: -13.436155, z: -17.841908}
+  m_LocalPosition: {x: -11, y: -13.436155, z: 19.4}
   m_LocalScale: {x: 8, y: 0.08, z: 8}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -1145,3 +1161,16 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!65 &768648957
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9145352645195270346}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: -0.0000019073486, z: -0.00000023841858}

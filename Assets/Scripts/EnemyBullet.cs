@@ -7,7 +7,6 @@
 
 using System.Collections;
 using System.Collections.Generic;
-using System.Security.Cryptography;
 using UnityEngine;
 
 public class EnemyBullet : MonoBehaviour
@@ -21,15 +20,16 @@ public class EnemyBullet : MonoBehaviour
     void Start()
     {
         //
-        rigBod = GetComponent<rigBod>();
-        player = gameObject.FindGameObjectWithTag("Player") //using "Player" tag to find position of player
+        rigBod = GetComponent<Rigidbody>();
+        player = GameObject.FindGameObjectWithTag("Player"); //using "Player" tag to find position of player
 
-        //giving bullet direction to go in
-        Vector3 direction = player.transform.posistion - transform.position;
-        rigBod.velocity = new Vector2(direction.x, direction.y).normalised * bulletSpeed; //setting bullet speed and ensuring it flies in straight line wth "normalised"
+        //giving bullet direction and location to go in
+        Vector3 direction = player.transform.position - transform.position;
+        rigBod.velocity = new Vector2(direction.x, direction.y).normalized * bulletSpeed; //setting bullet speed and ensuring it flies in straight line wth "normalised"
 
-        float rot = Mathf.Atan2(-direction.x, direction.y) * MathF.Rad2Deg;
-        trasform.rotation = Quaternion.Euler(0,0,rot);
+        //rotating bullet in player direction
+        float rot = Mathf.Atan2(-direction.x, direction.y) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(0,0,rot);
     }
 
     // Update is called once per frame
