@@ -15,8 +15,8 @@ public class PlayerController : MonoBehaviour
     public float horizontalRotation;
 
     //boundary specifications
-    public float speed = 10.0f; 
-    public float xRange = 20.0f;
+    public float speed = 20.0f; 
+    public float xRange = 50.0f;
 
     //bullet obect reference for instantiation
     public GameObject projectilePrefab;
