@@ -1,9 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 
 public class DetectPlayer : MonoBehaviour
 {
+    public GameObject bullet;
+    public Transform bulletPos;
+    private float rateOfFire;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -13,6 +18,15 @@ public class DetectPlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        rateOfFire += Time.deltaTime;
+        if (rateOfFire > 2 )
+        {
+            rateOfFire = 0;
+            shoot();
+        }
+    }
+    void shoot() 
+    {
+        Instantiate(bullet, bulletPos.position, Quaternion.identity);
     }
 }
