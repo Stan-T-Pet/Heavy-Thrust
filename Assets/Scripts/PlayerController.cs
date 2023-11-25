@@ -1,86 +1,119 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using System.Diagnostics;
-using System.Timers;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    //Keyboard inputs
-    public float horizontalInput;
-    public float verticalInput;
+    // Keyboard inputs
+    private float horizontalInput;
+    private float verticalInput;
+    private float ascentInput; // Input for vertical movement (y-axis)
 
-    //Mouse controls
+    // Mouse controls
     public float mouseSensitivity = 100.0f;
-    public float horizontalRotation;
 
-    //boundary specifications
-    public float speed = 20.0f; 
-    public float xRange = 50.0f;
+    // Boundary specifications
+    private float speed = 10.0f; // Starting speed
+    public float xRange = 20.0f;
+    public float ascentSpeed = 5.0f; // Speed for vertical movement
 
-    //bullet obect reference for instantiation
+    // Leaning
+    public float leanAngle = 15.0f; // Maximum angle for leaning
+    public float leanSpeed = 5.0f; // Speed of leaning
+
+    // Projectile object reference for instantiation
     public GameObject projectilePrefab;
-    public Rigidbody rigBod;
+    private Rigidbody rigBod;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
+        // Cache the Rigidbody component for better performance
         rigBod = GetComponent<Rigidbody>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        //Mouse controls
-        //left click - for reload
-        if (Input.GetMouseButtonDown(0))
-        {
-            UnityEngine.Debug.Log("Mouse 0 - Left Click");
-        }
-        //right click - for shoot
-        if (Input.GetMouseButtonDown(1))
-        {
-            Instantiate(projectilePrefab, transform.position, projectilePrefab.transform.rotation);
-            //UnityEngine.Debug.Log("Mouse 1 - Right Click");
-        }
-        //scroll wheel - for speedup
-        if (Input.GetMouseButtonDown(2))
-        {
-            //speed = 20.0f;
-            //transform.Translate(Vector3.right * horizontalInput * Time.deltaTime * speed);
-            //UnityEngine.Debug.Log("Mouse 2 - scroll wheel");
-        }
-        //scroll wheel - for speedup
-        if (Input.GetMouseButtonDown(2))
-        {
+        HandleMouseInput();
+        HandleLeaningInput();
+        CheckBounds();
+        HandleMovementInput();
+    }
 
-            //UnityEngine.Debug.Log("Mouse 2 - scroll wheel");
-        }
-
-
-        //check if player is withing bounds of play area and keep em there
-        if (transform.position.x > xRange)
-        {
-            transform.position = new Vector3(xRange, transform.position.y, transform.position.z);
-        }
-        if (transform.position.x < -xRange)
-        {
-            transform.position = new Vector3(-xRange, transform.position.y, transform.position.z);
-        }
-
-        //mouse rotation
-        horizontalRotation = Input.GetAxis("Mouse X") * Time.deltaTime * mouseSensitivity;
+    private void HandleMouseInput()
+    {
+        float horizontalRotation = Input.GetAxis("Mouse X") * Time.deltaTime * mouseSensitivity;
         transform.Rotate(Vector3.up, horizontalRotation);
 
+        if (Input.GetMouseButtonDown(0))
+        {
+            // Handle left-click (reload) logic here
+            UnityEngine.Debug.Log("Mouse 0 - Left Click");
+        }
 
+        if (Input.GetMouseButtonDown(1))
+        {
+            // Handle right-click (shoot) logic here
+            Instantiate(projectilePrefab, transform.position, projectilePrefab.transform.rotation);
+        }
+    }
 
-        //Get Input from horizontal input from player
+    private void HandleLeaningInput()
+    {
+        float currentLean = 0;
+        if (Input.GetKey(KeyCode.Q))
+        {
+            currentLean = leanSpeed * Time.deltaTime;
+            // Apply lean rotation around z-axis
+            transform.localRotation = Quaternion.Euler(transform.localRotation.eulerAngles.x, transform.localRotation.eulerAngles.y, transform.localRotation.eulerAngles.z + currentLean);
+        }
+        else if (Input.GetKey(KeyCode.E))
+        {
+            currentLean = -leanSpeed * Time.deltaTime;
+            // Apply lean rotation around z-axis
+            transform.localRotation = Quaternion.Euler(transform.localRotation.eulerAngles.x, transform.localRotation.eulerAngles.y, transform.localRotation.eulerAngles.z + currentLean);
+        }
+    }
+
+    private void CheckBounds()
+    {
+        // Clamp the player's position to stay within the specified xRange
+        float clampedX = Mathf.Clamp(transform.position.x, -xRange, xRange);
+        transform.position = new Vector3(clampedX, transform.position.y, transform.position.z);
+    }
+
+    private void HandleMovementInput()
+    {
+        // Get input from the player
         verticalInput = Input.GetAxis("Vertical");
         horizontalInput = Input.GetAxis("Horizontal");
+        ascentInput = 0;
 
-        //move ingame player obj - up, down, left and right
-        //transform.Translate(Vector3.right * horizontalInput * Time.deltaTime * speed);
-        Vector3 move = transform.forward * verticalInput + transform.right * horizontalInput;
-        rigBod.MovePosition(transform.position + move * speed * Time.deltaTime);
+        if (Input.GetKey(KeyCode.Space)) // Ascend
+        {
+            ascentInput = ascentSpeed;
+        }
+        else if (Input.GetKey(KeyCode.LeftShift)) // Descend
+        {
+            ascentInput = -ascentSpeed;
+        }
+
+        // Calculate movement direction
+        Vector3 moveDirection = (transform.forward * verticalInput + transform.right * horizontalInput).normalized;
+        Vector3 ascentDirection = new Vector3(0, ascentInput, 0);
+
+        // Increase speed if the "W" key is pressed
+        if (Input.GetKey(KeyCode.W))
+        {
+            speed = 20.0f; // Adjust the speed as needed
+        }
+        else
+        {
+            speed = 10.0f; // Reset speed to the default value
+        }
+
+        // Move the player using Rigidbody
+        rigBod.velocity = moveDirection * speed + ascentDirection;
     }
 }
