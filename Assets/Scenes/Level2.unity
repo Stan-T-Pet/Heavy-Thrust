@@ -682,7 +682,7 @@ MonoBehaviour:
   xRange: 20
   ascentSpeed: 5
   leanAngle: 15
-  leanSpeed: 5
+  leanSpeed: 10
   projectilePrefab: {fileID: 2839217235667195584, guid: c30c6fdb792691940a332f2594caa329, type: 3}
 --- !u!1 &1206669622
 GameObject:
