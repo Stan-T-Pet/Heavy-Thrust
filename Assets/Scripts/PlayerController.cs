@@ -11,9 +11,9 @@ public class PlayerController : MonoBehaviour
     public float mouseSensitivity = 100.0f;
 
     // Boundary specifications
-    private float speed = 10.0f; // Starting speed
-    public float xRange = 20.0f;
-    public float ascentSpeed = 5.0f; // Speed for vertical movement
+    private float speed = 25.0f; // Starting speed
+    public float xRange = 75.0f;
+    public float ascentSpeed = 20.0f; // Speed for vertical movement
 
     // Leaning
     public float leanAngle = 15.0f; // Maximum angle for leaning
@@ -35,7 +35,7 @@ public class PlayerController : MonoBehaviour
     {
         HandleMouseInput();
         HandleLeaningInput();
-        //CheckBounds();
+        CheckBounds();
         HandleMovementInput();
     }
 
@@ -75,6 +75,14 @@ public class PlayerController : MonoBehaviour
 
     private void CheckBounds()
     {
+        // Clamp the player's position to stay within the specified xRange
+        float xLimit = Mathf.Clamp(transform.position.x, -xRange, xRange);
+
+        // Prevent the player from going below 0 on the y-axis
+        float yLimit = Mathf.Max(transform.position.y, 0.0f);
+
+        transform.position = new Vector3(xLimit, yLimit, transform.position.z);
+
         // Clamp the player's position to stay within the specified xRange
         float clampedX = Mathf.Clamp(transform.position.x, -xRange, xRange);
         transform.position = new Vector3(clampedX, transform.position.y, transform.position.z);

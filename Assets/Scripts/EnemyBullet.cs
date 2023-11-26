@@ -24,7 +24,7 @@ public class EnemyBullet : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player"); //using "Player" tag to find position of player
 
         //giving bullet direction and location to go in
-        Vector3 direction = (player.transform.position - transform.position).normalized;
+        Vector3 direction = (player.transform.position - transform.position).normalized; 
        
        //Set Bullet Speed
        rigBod.velocity = direction * bulletSpeed;
