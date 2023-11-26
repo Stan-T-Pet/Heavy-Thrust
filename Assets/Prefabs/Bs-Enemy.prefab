@@ -169,4 +169,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet: {fileID: 3293415893601809196}
   bulletPos: {fileID: 1155490953815628824}
-  bulletSpeed: 40
+  player: {fileID: 1822314352297193582, guid: bea1cd96f875a4b4099ddb332c3b028b, type: 3}
+  shootingRange: 150
