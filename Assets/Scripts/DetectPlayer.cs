@@ -10,51 +10,42 @@ using UnityEngine;
 public class DetectPlayer : MonoBehaviour
 {
 
-    public GameObject bullet;
-    public Transform bulletPos;
+    public GameObject bullet;//reference to Bullet
+    public Transform bulletPos;//reference to BulletPos
+    public GameObject player;//reference to player
     private float rateOfFire;
-    public float bulletSpeed = 40.0f;
+    public float shootingRange = 150.0f; //Range within the enemy detects the player
 
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
+
         rateOfFire += Time.deltaTime;
-        if (rateOfFire > 2 )
+        if (rateOfFire > 2)
         {
             rateOfFire = 0;
-            shoot();
-        }//fixxx
-    }
-
-    public GameObject FindPlayer()
-    {
-        GameObject[] gos;
-        gos = GameObject.FindGameObjectsWithTag("Palyer");
-        GameObject closest = null;
-        float distance = Mathf.Infinity;
-
-        Vector3 position = transform.position;
-        foreach (GameObject go in gos)
-        {
-            Vector3 diff = go.transform.position - position;
-            float curDistance = diff.sqrMagnitude;
-            if (curDistance < distance)
-            {
-                closest = go;
-                distance = curDistance;
-            }
+            Shoot();
         }
-        return closest;
     }
-    void shoot() 
+
+    bool PlayerRange()
     {
-        Instantiate(bullet, bulletPos.position, Quaternion.identity);
-        //transform.Translate(Vector3.forward * Time.deltaTime * bulletSpeed);
+        //Check if player is within range
+        return Vector3.Distance(transform.position, player.transform.position) <= shootingRange;
+    }
+    void Shoot()
+    {
+        //Makes bulletpos look at the player
+        bulletPos.LookAt(player.transform.position);
+
+        //instantiate new Bullet
+        GameObject newBullet = Instantiate(bullet, bulletPos.position, bulletPos.rotation);
+
     }
 }
