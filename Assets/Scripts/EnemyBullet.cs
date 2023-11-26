@@ -14,7 +14,7 @@ public class EnemyBullet : MonoBehaviour
 
     private GameObject player;//player obj reference to point bullet at
     private Rigidbody rigBod;
-    public float bulletSpeed;
+    public float bulletSpeed = 100.0f;//Speed of the bullet
 
     // Start is called before the first frame update
     void Start()
@@ -24,17 +24,17 @@ public class EnemyBullet : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player"); //using "Player" tag to find position of player
 
         //giving bullet direction and location to go in
-        Vector3 direction = player.transform.position - transform.position;
-        rigBod.velocity = new Vector2(direction.x, direction.y).normalized * bulletSpeed; //setting bullet speed and ensuring it flies in straight line wth "normalised"
+        Vector3 direction = (player.transform.position - transform.position).normalized;
+       
+       //Set Bullet Speed
+       rigBod.velocity = direction * bulletSpeed;
 
-        //rotating bullet in player direction
-        float rot = Mathf.Atan2(-direction.x, direction.y) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.Euler(0,0,rot);
+       transform.rotation = Quaternion.LookRotation(direction);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        transform.Translate(Vector3.forward * Time.deltaTime * bulletSpeed);
     }
 }

@@ -3,8 +3,8 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     // Keyboard inputs
-    private float horizontalInput;
-    private float verticalInput;
+    private float horizontalInput; //Input for horizontal movement (x-axis)
+    private float verticalInput; //Input for vertical movement
     private float ascentInput; // Input for vertical movement (y-axis)
 
     // Mouse controls

@@ -116,7 +116,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet: {fileID: 3293415893601809196, guid: e54418c83425043448830aee35e783fd, type: 3}
   bulletPos: {fileID: 5476641860024561430}
-  bulletSpeed: 40
+  player: {fileID: 1822314352297193582, guid: bea1cd96f875a4b4099ddb332c3b028b, type: 3}
+  shootingRange: 100
 --- !u!114 &6831030603128005002
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -153,7 +154,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1842244390239904585}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.11, y: 0, z: 0.79}
+  m_LocalPosition: {x: -0.11, y: 0, z: -0.941}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

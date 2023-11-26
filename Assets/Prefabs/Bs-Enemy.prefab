@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6976894685996578183}
   - component: {fileID: 134487761352875940}
   - component: {fileID: 9074791517714607674}
-  - component: {fileID: 8644206876378594175}
+  - component: {fileID: 2086117564172300520}
   m_Layer: 0
   m_Name: Bs-Enemy
   m_TagString: Untagged
@@ -95,7 +95,7 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3293415893601809196}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -124,7 +124,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8913ee6eac1dfb94093cccaed19135b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &8644206876378594175
+--- !u!114 &2086117564172300520
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -133,9 +133,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3293415893601809196}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 58905aa701492024ba395b927ceb7540, type: 3}
+  m_Script: {fileID: 11500000, guid: 9de90bc67f5230d469547161dd64cf78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 0}
-  bulletPos: {fileID: 0}
-  bulletSpeed: 40
+  bulletSpeed: 100
