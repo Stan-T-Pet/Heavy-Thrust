@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 3471118043963398692}
   - component: {fileID: 5671622879031035011}
   - component: {fileID: 6831030603128005002}
-  - component: {fileID: 1674107989}
   - component: {fileID: 3315257070508262025}
   m_Layer: 0
   m_Name: Enemy03
@@ -31,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 1822314352297193582}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 4.84, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 4, y: 4, z: 4}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1398646402026854352}
@@ -105,7 +104,6 @@ MonoBehaviour:
   bullet: {fileID: 3293415893601809196, guid: e54418c83425043448830aee35e783fd, type: 3}
   bulletPos: {fileID: 5476641860024561430}
   player: {fileID: 1822314352297193582, guid: bea1cd96f875a4b4099ddb332c3b028b, type: 3}
-  bulletSpeed: 40
   shootingRange: 1000
 --- !u!114 &6831030603128005002
 MonoBehaviour:
@@ -119,22 +117,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5ee826096a27004ebeee38e48ea7f1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1674107989
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1822314352297193582}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ed6d5b8076b5e4468983d7689a835d1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyPrefabs:
-  - {fileID: 1822314352297193582, guid: 877981667bf608240b4e217f7f3f1d19, type: 3}
-  - {fileID: 1822314352297193582, guid: dd36938cba245ae479bc8eb685697bf3, type: 3}
-  - {fileID: 1822314352297193582}
 --- !u!136 &3315257070508262025
 CapsuleCollider:
   m_ObjectHideFlags: 0

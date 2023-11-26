@@ -35,7 +35,7 @@ public class PlayerController : MonoBehaviour
     {
         HandleMouseInput();
         HandleLeaningInput();
-        CheckBounds();
+        //CheckBounds();
         HandleMovementInput();
     }
 
