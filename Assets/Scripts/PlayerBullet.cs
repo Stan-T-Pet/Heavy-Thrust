@@ -5,14 +5,15 @@ using UnityEngine;
 public class PlayerBullet : MonoBehaviour
 {
     public float speed = 50f;
+    
 
-    // Start is called before the first frame update
+    //Start is called before the first frame update
     void Start()
     {
-        // Initialization if needed
+        
     }
 
-    // Update is called once per frame
+    //Update is called once per frame
     void Update()
     {
         // Move the bullet forward
