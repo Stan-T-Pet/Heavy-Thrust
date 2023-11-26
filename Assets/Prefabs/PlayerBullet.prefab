@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 8645794080685382312}
   - component: {fileID: 7931932126604491767}
   - component: {fileID: -8603479553351152570}
+  - component: {fileID: 6454134454781309448}
   m_Layer: 0
   m_Name: PlayerBullet
   m_TagString: Untagged
@@ -94,7 +95,7 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6071977516206086786}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -128,3 +129,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 50
+--- !u!114 &6454134454781309448
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6071977516206086786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8913ee6eac1dfb94093cccaed19135b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
