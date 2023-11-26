@@ -76,12 +76,14 @@ public class SpawnManager : MonoBehaviour
     {
         // Increment the kill count
         killCount++;
+        Debug.Log("Enemies Killed" + killCount);
 
         // Check if the kill count has reached the maximum
         if (killCount >= spawnMax)
+        
         {
-            // End the round and print a victory message
-            SceneManager.LoadScene("Victory");
+                Debug.Log("Victory");
+                SceneManager.LoadScene("Victory");//End of round Load next Scene
         }
     }
 }
