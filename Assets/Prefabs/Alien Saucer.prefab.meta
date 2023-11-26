@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Prefabs/Alien Saucer.prefab.meta
 guid: b1deb752df8c71646b700c230628c025
+========
+guid: e4cd5cb9f1b8ca3479e3147ca466b109
+>>>>>>>> main:Assets/Prefabs/BS-Bullet.prefab.meta
 PrefabImporter:
   externalObjects: {}
   userData: 

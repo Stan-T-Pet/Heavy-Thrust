@@ -3,8 +3,8 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     // Keyboard inputs
-    private float horizontalInput; //Input for horizontal movement (x-axis)
-    private float verticalInput; //Input for vertical movement
+    private float horizontalInput;
+    private float verticalInput;
     private float ascentInput; // Input for vertical movement (y-axis)
 
     // Mouse controls
@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour
 
     // Boundary specifications
     private float speed = 10.0f; // Starting speed
-    public float xRange = 20.0f;
+    public float xRange = 50.0f;
     public float ascentSpeed = 5.0f; // Speed for vertical movement
 
     // Leaning
@@ -35,7 +35,7 @@ public class PlayerController : MonoBehaviour
     {
         HandleMouseInput();
         HandleLeaningInput();
-        //CheckBounds();
+        CheckBounds();
         HandleMovementInput();
     }
 
@@ -43,12 +43,6 @@ public class PlayerController : MonoBehaviour
     {
         float horizontalRotation = Input.GetAxis("Mouse X") * Time.deltaTime * mouseSensitivity;
         transform.Rotate(Vector3.up, horizontalRotation);
-
-        if (Input.GetMouseButtonDown(0))
-        {
-            // Handle left-click (reload) logic here
-            Debug.Log("Mouse 0 - Left Click");
-        }
 
         if (Input.GetMouseButtonDown(1))
         {
@@ -76,8 +70,12 @@ public class PlayerController : MonoBehaviour
     private void CheckBounds()
     {
         // Clamp the player's position to stay within the specified xRange
-        float clampedX = Mathf.Clamp(transform.position.x, -xRange, xRange);
-        transform.position = new Vector3(clampedX, transform.position.y, transform.position.z);
+        float xLimit = Mathf.Clamp(transform.position.x, -xRange, xRange);
+
+        // Prevent the player from going below 0 on the y-axis
+        float yLimit = Mathf.Max(transform.position.y, 0.0f);
+
+        transform.position = new Vector3(xLimit, yLimit, transform.position.z);
     }
 
     private void HandleMovementInput()

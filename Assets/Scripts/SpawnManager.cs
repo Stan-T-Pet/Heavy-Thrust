@@ -1,8 +1,6 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class SpawnManager : MonoBehaviour
 {
@@ -10,7 +8,7 @@ public class SpawnManager : MonoBehaviour
     public GameObject[] enemyPrefabs;
 
     // Enemy spawn locations array
-    public GameObject[] enemySpawnPoints;
+    public Transform[] enemySpawnPoints;
 
     // Spawn interval in seconds
     private float spawnInterval = 2.5f;
@@ -22,10 +20,19 @@ public class SpawnManager : MonoBehaviour
     private int spawnDelay = 2;
 
     // Maximum number of enemies to spawn
-    private int spawnMax = 5;
+    private int spawnMax = 10;
 
     // Current enemy kill count
     private int killCount = 0;
+
+    // Maximum number of enemies on screen at once
+    private int maxEnemiesOnScreen = 3;
+
+    // List to keep track of active enemies
+    private List<GameObject> activeEnemies = new List<GameObject>();
+
+    // List to keep track of destroyed enemies
+    private List<GameObject> destroyedEnemies = new List<GameObject>();
 
     // Start is called before the first frame update
     void Start()
@@ -44,7 +51,7 @@ public class SpawnManager : MonoBehaviour
             if (killCount >= spawnMax)
             {
                 // End the round and print a victory message
-                Debug.Log("End of Round - Victory!");
+                UnityEngine.Debug.Log("End of Round - Victory!");
             }
             else
             {
@@ -59,31 +66,54 @@ public class SpawnManager : MonoBehaviour
 
     void SpawnEnemy()
     {
-        // Select a random enemy prefab
-        int enemyIndex = UnityEngine.Random.Range(0, enemyPrefabs.Length);
-        GameObject enemyPrefab = enemyPrefabs[enemyIndex];
+        // Check if there are already maxEnemiesOnScreen active enemies
+        if (activeEnemies.Count < maxEnemiesOnScreen)
+        {
+            // Select a random enemy prefab
+            int enemyIndex = UnityEngine.Random.Range(0, enemyPrefabs.Length);
+            GameObject enemyPrefab = enemyPrefabs[enemyIndex];
 
-        // Get the next enemy spawn point
-        int spawnPointIndex = UnityEngine.Random.Range(0, enemySpawnPoints.Length);
-        Vector3 spawnPos = enemySpawnPoints[spawnPointIndex].transform.position;
+            // Get the next enemy spawn point
+            Transform spawnPoint = GetRandomSpawnPoint();
 
-        // Instantiate the enemy prefab at the spawn position
-        Instantiate(enemyPrefab, spawnPos, Quaternion.identity);
+            // Instantiate the enemy prefab at the spawn position
+            GameObject enemyInstance = Instantiate(enemyPrefab, spawnPoint.position, Quaternion.identity);
+
+            // Add the spawned enemy to the list of active enemies
+            activeEnemies.Add(enemyInstance);
+        }
     }
 
     // Function to be called when an enemy is killed
-    public void EnemyKilled()
+    public void EnemyKilled(GameObject enemy)
     {
+        // Remove the killed enemy from the list of active enemies
+        activeEnemies.Remove(enemy);
+
+        // Add the killed enemy to the list of destroyed enemies
+        destroyedEnemies.Add(enemy);
+
         // Increment the kill count
         killCount++;
-        Debug.Log("Enemies Killed" + killCount);
 
         // Check if the kill count has reached the maximum
         if (killCount >= spawnMax)
-        
         {
-                Debug.Log("Victory");
-                SceneManager.LoadScene("Victory");//End of round Load next Scene
+            // End the round and print a victory message
+            UnityEngine.Debug.Log("End of Round - Victory!");
         }
+    }
+
+    // Function to get the list of destroyed enemies
+    public List<GameObject> GetDestroyedEnemies()
+    {
+        return destroyedEnemies;
+    }
+
+    // Get a random spawn point from the predefined locations
+    Transform GetRandomSpawnPoint()
+    {
+        int randomIndex = UnityEngine.Random.Range(0, enemySpawnPoints.Length);
+        return enemySpawnPoints[randomIndex];
     }
 }
