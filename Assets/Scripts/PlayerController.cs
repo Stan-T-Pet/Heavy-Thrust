@@ -21,6 +21,8 @@ public class PlayerController : MonoBehaviour
 
     // Projectile object reference for instantiation
     public GameObject projectilePrefab;
+    public Transform shootingPoint; // Shooting point reference
+
     private Rigidbody rigBod;
 
     private void Start()
@@ -51,7 +53,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetMouseButtonDown(1))
         {
             // Handle right-click (shoot) logic here
-            Instantiate(projectilePrefab, transform.position, projectilePrefab.transform.rotation);
+            Instantiate(projectilePrefab, shootingPoint.position, shootingPoint.rotation);
         }
     }
 

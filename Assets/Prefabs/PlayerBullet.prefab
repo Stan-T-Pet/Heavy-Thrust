@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 1177069335113705961}
   - component: {fileID: 8472293228186175523}
   - component: {fileID: 886199507590448467}
-  - component: {fileID: 8619841674891629678}
   - component: {fileID: 4686187071283309872}
   - component: {fileID: 3115500397878625585}
+  - component: {fileID: 3948918888104034214}
   - component: {fileID: -165877203881508607}
   m_Layer: 0
   m_Name: PlayerBullet
@@ -212,19 +212,6 @@ TrailRenderer:
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
   m_Emitting: 1
---- !u!114 &8619841674891629678
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2839217235667195584}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 19a0cc7c9c5957a45ba79075525d999c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 40
 --- !u!114 &4686187071283309872
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -249,6 +236,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5ee826096a27004ebeee38e48ea7f1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3948918888104034214
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2839217235667195584}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd62d0c4ebebe60449c9ff761f190cbe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 50
 --- !u!54 &-165877203881508607
 Rigidbody:
   m_ObjectHideFlags: 0
