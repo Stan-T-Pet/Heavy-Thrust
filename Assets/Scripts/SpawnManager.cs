@@ -22,10 +22,16 @@ public class SpawnManager : MonoBehaviour
     private int spawnDelay = 2;
 
     // Maximum number of enemies to spawn
-    private int spawnMax = 5;
+    private int spawnMax = 10;
 
     // Current enemy kill count
     private int killCount = 0;
+
+    // Maximum number of enemies on screen at once
+    private int maxEnemiesOnScreen = 3;
+
+    // List to keep track of active enemies
+    private List<GameObject> activeEnemies = new List<GameObject>();
 
     // Start is called before the first frame update
     void Start()
@@ -59,20 +65,30 @@ public class SpawnManager : MonoBehaviour
 
     void SpawnEnemy()
     {
-        // Select a random enemy prefab
-        int enemyIndex = Random.Range(0, enemyPrefabs.Length);
-        GameObject enemyPrefab = enemyPrefabs[enemyIndex];
+        // Check if there are already maxEnemiesOnScreen active enemies
+        if (activeEnemies.Count < maxEnemiesOnScreen)
+        {
+            // Select a random enemy prefab
+            int enemyIndex = UnityEngine.Random.Range(0, enemyPrefabs.Length);
+            GameObject enemyPrefab = enemyPrefabs[enemyIndex];
 
-        // Get the next enemy spawn point
-        Transform spawnPoint = GetRandomSpawnPoint();
+            // Get the next enemy spawn point
+            Transform spawnPoint = GetRandomSpawnPoint();
 
-        // Instantiate the enemy prefab at the spawn position
-        Instantiate(enemyPrefab, spawnPoint.position, Quaternion.identity);
+            // Instantiate the enemy prefab at the spawn position
+            GameObject enemyInstance = Instantiate(enemyPrefab, spawnPoint.position, Quaternion.identity);
+
+            // Add the spawned enemy to the list of active enemies
+            activeEnemies.Add(enemyInstance);
+        }
     }
 
     // Function to be called when an enemy is killed
-    public void EnemyKilled()
+    public void EnemyKilled(GameObject enemy)
     {
+        // Remove the killed enemy from the list of active enemies
+        activeEnemies.Remove(enemy);
+
         // Increment the kill count
         killCount++;
 
