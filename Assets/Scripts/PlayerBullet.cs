@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Security.Cryptography;
 using UnityEngine;
 
 public class PlayerBullet : MonoBehaviour
@@ -11,7 +10,6 @@ public class PlayerBullet : MonoBehaviour
     void Start()
     {
         // Initialization if needed
-       // transform.forward = Vector3.forward;      
     }
 
     // Update is called once per frame

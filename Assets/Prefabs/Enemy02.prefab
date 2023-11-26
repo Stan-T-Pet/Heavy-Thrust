@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 5231545974985429986}
   m_Layer: 0
   m_Name: Enemy02
-  m_TagString: enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -67,7 +67,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 71b3cd7f837dd0a4ba4fdd64c4566b24, type: 2}
+  - {fileID: 2100000, guid: cdc1a3152cf4b694fbe33ab3c3682f94, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -101,10 +101,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58905aa701492024ba395b927ceb7540, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 3293415893601809196, guid: 157d3de108eea9e4f81c237a56ccc511, type: 3}
+  bullet: {fileID: 3293415893601809196, guid: e54418c83425043448830aee35e783fd, type: 3}
   bulletPos: {fileID: 5476641860024561430}
   player: {fileID: 1822314352297193582, guid: bea1cd96f875a4b4099ddb332c3b028b, type: 3}
-  shootingRange: 150
+  shootingRange: 100
 --- !u!114 &6831030603128005002
 MonoBehaviour:
   m_ObjectHideFlags: 0
