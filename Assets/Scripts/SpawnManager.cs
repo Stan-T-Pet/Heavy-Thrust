@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SpawnManager : MonoBehaviour
 {
@@ -80,7 +81,7 @@ public class SpawnManager : MonoBehaviour
         if (killCount >= spawnMax)
         {
             // End the round and print a victory message
-            Debug.Log("End of Round - Victory!");
+            SceneManager.LoadScene("Victory");
         }
     }
 }
