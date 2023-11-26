@@ -1,7 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Threading;
-using System.Diagnostics;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -25,6 +21,8 @@ public class PlayerController : MonoBehaviour
 
     // Projectile object reference for instantiation
     public GameObject projectilePrefab;
+    public Transform shootingPoint; // Shooting point reference
+
     private Rigidbody rigBod;
 
     private void Start()
@@ -45,17 +43,11 @@ public class PlayerController : MonoBehaviour
     {
         float horizontalRotation = Input.GetAxis("Mouse X") * Time.deltaTime * mouseSensitivity;
         transform.Rotate(Vector3.up, horizontalRotation);
-
-        if (Input.GetMouseButtonDown(0))
-        {
-            // Handle left-click (reload) logic here
-            UnityEngine.Debug.Log("Mouse 0 - Left Click");
-        }
-
+      
         if (Input.GetMouseButtonDown(1))
         {
             // Handle right-click (shoot) logic here
-            Instantiate(projectilePrefab, transform.position, projectilePrefab.transform.rotation);
+            Instantiate(projectilePrefab, shootingPoint.position, shootingPoint.rotation);
         }
     }
 
@@ -65,15 +57,14 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKey(KeyCode.Q))
         {
             currentLean = leanSpeed * Time.deltaTime;
-            // Apply lean rotation around z-axis
-            transform.localRotation = Quaternion.Euler(transform.localRotation.eulerAngles.x, transform.localRotation.eulerAngles.y, transform.localRotation.eulerAngles.z + currentLean);
         }
         else if (Input.GetKey(KeyCode.E))
         {
             currentLean = -leanSpeed * Time.deltaTime;
-            // Apply lean rotation around z-axis
-            transform.localRotation = Quaternion.Euler(transform.localRotation.eulerAngles.x, transform.localRotation.eulerAngles.y, transform.localRotation.eulerAngles.z + currentLean);
         }
+
+        // Apply lean rotation around z-axis
+        transform.localRotation = Quaternion.Euler(transform.localRotation.eulerAngles.x, transform.localRotation.eulerAngles.y, transform.localRotation.eulerAngles.z + currentLean);
     }
 
     private void CheckBounds()

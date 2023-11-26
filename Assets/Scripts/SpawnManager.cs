@@ -1,47 +1,74 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
-    //enemy prefab
+    // Enemy prefabs array
     public GameObject[] enemyPrefabs;
-    private float spawnRangeX = 30;
-    private float spawnPosZ = 30;
-    private float spawnRangeY = 30;
-    private float startDelay = 1.5f;
-    private float spawnInterval = 1.5f;
+
+    // Enemy spawn locations array
+    public GameObject[] enemySpawnPoints;
+
+    // Spawn interval in seconds
+    private float spawnInterval = 2.5f;
+
+    // Current spawn count
+    private int spawnCount = 0;
+
+    // Spawn delay in seconds
+    private int spawnDelay = 2;
+
+    // Maximum number of enemies to spawn
+    private int spawnMax = 10;
+
+    // Current enemy kill count
+    private int killCount = 0;
 
     // Start is called before the first frame update
     void Start()
     {
-        InvokeRepeating("SpawnEnemy", startDelay, spawnInterval);
+        // Invoke a repeating function to spawn enemies at regular intervals
+        InvokeRepeating("SpawnEnemy", spawnDelay, spawnInterval);
     }
 
     // Update is called once per frame
     void Update()
     {
+        // Check if the spawn count is less than the maximum spawn count and the kill count is not yet at the maximum
+        while (spawnCount < 3 && killCount <= spawnMax)
+        {
+            // Check if the kill count has reached the maximum
+            if (killCount == spawnMax)
+            {
+                // End the round and print a victory message
+                UnityEngine.Debug.Log("End of Round - Victory!");
+                break;
+            }
+            else
+            {
+                // Increment the spawn count
+                spawnCount++;
 
-
+                // Spawn an enemy
+                SpawnEnemy();
+            }
+        }
     }
 
-    void SpawnEnemy() 
+    void SpawnEnemy()
     {
-        //max number of enemies spawnable on level = 9
-        //spawn 3 enemies at scene start
-        //when number of enemies fall bellow 3, spawn new enemy at random spawnLoc
-        
+        // Select a random enemy prefab
+        int enemyIndex = UnityEngine.Random.Range(0, enemyPrefabs.Length);
+        GameObject enemyPrefab = enemyPrefabs[enemyIndex];
 
+        // Get the next enemy spawn point
+        int spawnPointIndex = (spawnCount + killCount) % enemySpawnPoints.Length;
+        Vector3 spawnPos = enemySpawnPoints[spawnPointIndex].transform.position;
 
-        //SpawnCoount stores random value based on number of enemy variation
-        int spawnCount = UnityEngine.Random.Range(0, enemyPrefabs.Length);
-
-        //spawn position 
-        Vector3 spawnPos = new Vector3();
-
-        //random location spawn positioning
-        Instantiate(enemyPrefabs[spawnCount], spawnPos, enemyPrefabs[spawnCount].transform.rotation);
+        // Instantiate the enemy prefab at the spawn position
+        Instantiate(enemyPrefab, spawnPos, Quaternion.identity);
     }
-
 }
