@@ -123,6 +123,7 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+<<<<<<< HEAD
 --- !u!1 &97326469
 GameObject:
   m_ObjectHideFlags: 0
@@ -221,6 +222,8 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 97326469}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+=======
+>>>>>>> stanley-LV1
 --- !u!1001 &111125053
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -278,6 +281,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b09d73ef80a6a8a42b893769f5a96f9c, type: 3}
+<<<<<<< HEAD
 --- !u!1 &123593234
 GameObject:
   m_ObjectHideFlags: 0
@@ -977,6 +981,8 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+=======
+>>>>>>> stanley-LV1
 --- !u!1001 &443757280
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1034,6 +1040,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b09d73ef80a6a8a42b893769f5a96f9c, type: 3}
+<<<<<<< HEAD
 --- !u!1 &477211940
 GameObject:
   m_ObjectHideFlags: 0
@@ -1425,6 +1432,13 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 658629555}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+=======
+--- !u!4 &512332158 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4019361086150810100, guid: b09d73ef80a6a8a42b893769f5a96f9c, type: 3}
+  m_PrefabInstance: {fileID: 443757280}
+  m_PrefabAsset: {fileID: 0}
+>>>>>>> stanley-LV1
 --- !u!1001 &709707714
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1494,6 +1508,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9e0284b0ac8725540a2d2d595a5bfd52, type: 3}
+<<<<<<< HEAD
 --- !u!1 &718439621
 GameObject:
   m_ObjectHideFlags: 0
@@ -2206,6 +2221,8 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+=======
+>>>>>>> stanley-LV1
 --- !u!1 &990859196
 GameObject:
   m_ObjectHideFlags: 0
@@ -2276,6 +2293,7 @@ MonoBehaviour:
   - {fileID: 1611690945}
   - {fileID: 1170336936}
   - {fileID: 512332158}
+<<<<<<< HEAD
   spawnInterval: 2.5
   spawnCount: 0
   spawnDelay: 2
@@ -2284,6 +2302,8 @@ MonoBehaviour:
   maxEnemiesOnScreen: 3
   activeEnemies: []
   destroyedEnemies: []
+=======
+>>>>>>> stanley-LV1
 --- !u!114 &990859201
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2314,6 +2334,7 @@ MonoBehaviour:
   m_DeselectOnBackgroundClick: 1
   m_PointerBehavior: 0
   m_CursorLockBehavior: 1
+<<<<<<< HEAD
 --- !u!1 &1021983909
 GameObject:
   m_ObjectHideFlags: 0
@@ -2966,6 +2987,13 @@ Transform:
   m_Father: {fileID: 2111356690}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: -167.125, y: 0, z: -39.921997}
+=======
+--- !u!4 &1170336936 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4019361086150810100, guid: b09d73ef80a6a8a42b893769f5a96f9c, type: 3}
+  m_PrefabInstance: {fileID: 111125053}
+  m_PrefabAsset: {fileID: 0}
+>>>>>>> stanley-LV1
 --- !u!1001 &1347032535
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3023,6 +3051,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bea1cd96f875a4b4099ddb332c3b028b, type: 3}
+<<<<<<< HEAD
 --- !u!1 &1380221187
 GameObject:
   m_ObjectHideFlags: 0
@@ -8223,6 +8252,13 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 384317873}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+=======
+--- !u!4 &1611690945 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4019361086150810100, guid: b09d73ef80a6a8a42b893769f5a96f9c, type: 3}
+  m_PrefabInstance: {fileID: 4303312157885005505}
+  m_PrefabAsset: {fileID: 0}
+>>>>>>> stanley-LV1
 --- !u!1001 &1620572148
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8374,6 +8410,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+<<<<<<< HEAD
 --- !u!1 &1641212772
 GameObject:
   m_ObjectHideFlags: 0
@@ -10064,6 +10101,8 @@ Transform:
   m_Father: {fileID: 1595457336}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+=======
+>>>>>>> stanley-LV1
 --- !u!1001 &4303312157885005505
 PrefabInstance:
   m_ObjectHideFlags: 0
