@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class DetectCollisions : MonoBehaviour
 {
     // Start is called before the first frame update
@@ -18,7 +18,8 @@ public class DetectCollisions : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag ("Player")){
-            Debug.Log("Game Over");
+            
+              SceneManager.LoadScene("Lose");//End of round Load next Scene
         }
         
        Destroy(gameObject);
