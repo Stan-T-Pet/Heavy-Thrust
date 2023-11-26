@@ -10,7 +10,7 @@ public class SpawnManager : MonoBehaviour
     public GameObject[] enemyPrefabs;
 
     // Enemy spawn locations array
-    public GameObject[] enemySpawnPoints;
+    public Transform[] enemySpawnPoints;
 
     // Spawn interval in seconds
     private float spawnInterval = 2.5f;
@@ -22,7 +22,7 @@ public class SpawnManager : MonoBehaviour
     private int spawnDelay = 2;
 
     // Maximum number of enemies to spawn
-    private int spawnMax = 10;
+    private int spawnMax = 5;
 
     // Current enemy kill count
     private int killCount = 0;
@@ -37,15 +37,14 @@ public class SpawnManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Check if the spawn count is less than the maximum spawn count and the kill count is not yet at the maximum
-        while (spawnCount < 3 && killCount <= spawnMax)
+        // Check if the spawn count is less than the maximum spawn count
+        if (spawnCount < spawnMax)
         {
             // Check if the kill count has reached the maximum
-            if (killCount == spawnMax)
+            if (killCount >= spawnMax)
             {
                 // End the round and print a victory message
                 UnityEngine.Debug.Log("End of Round - Victory!");
-                break;
             }
             else
             {
@@ -61,14 +60,34 @@ public class SpawnManager : MonoBehaviour
     void SpawnEnemy()
     {
         // Select a random enemy prefab
-        int enemyIndex = UnityEngine.Random.Range(0, enemyPrefabs.Length);
+        int enemyIndex = Random.Range(0, enemyPrefabs.Length);
         GameObject enemyPrefab = enemyPrefabs[enemyIndex];
 
         // Get the next enemy spawn point
-        int spawnPointIndex = (spawnCount + killCount) % enemySpawnPoints.Length;
-        Vector3 spawnPos = enemySpawnPoints[spawnPointIndex].transform.position;
+        Transform spawnPoint = GetRandomSpawnPoint();
 
         // Instantiate the enemy prefab at the spawn position
-        Instantiate(enemyPrefab, spawnPos, Quaternion.identity);
+        Instantiate(enemyPrefab, spawnPoint.position, Quaternion.identity);
+    }
+
+    // Function to be called when an enemy is killed
+    public void EnemyKilled()
+    {
+        // Increment the kill count
+        killCount++;
+
+        // Check if the kill count has reached the maximum
+        if (killCount >= spawnMax)
+        {
+            // End the round and print a victory message
+            UnityEngine.Debug.Log("End of Round - Victory!");
+        }
+    }
+
+    // Get a random spawn point from the predefined locations
+    Transform GetRandomSpawnPoint()
+    {
+        int randomIndex = UnityEngine.Random.Range(0, enemySpawnPoints.Length);
+        return enemySpawnPoints[randomIndex];
     }
 }
