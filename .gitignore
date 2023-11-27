@@ -2,9 +2,9 @@
 #
 # Get latest from https://github.com/github/gitignore/blob/main/Unity.gitignore
 #
-/[Ll]ibrary/
-/[Tt]emp/
-/[Oo]bj/
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
 /[Bb]uild/
 /[Bb]uilds/
 /[Ll]ogs/
@@ -15,7 +15,7 @@
 /[Mm]emoryCaptures/
 
 # Recordings can get excessive in size
-/[Rr]ecordings/
+/[Rr]ecordings/S
 
 # Uncomment this line if you wish to ignore the asset store tools plugin
 # /[Aa]ssets/AssetStoreTools*
