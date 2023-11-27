@@ -16,7 +16,6 @@ public class EnemyBullet : MonoBehaviour
     private Rigidbody rigBod;
     public float bulletSpeed = 100.0f;//Speed of the bullet
 
-    // Start is called before the first frame update
     void Start()
     {
         //
@@ -31,8 +30,6 @@ public class EnemyBullet : MonoBehaviour
 
        transform.rotation = Quaternion.LookRotation(direction);
     }
-
-    // Update is called once per frame
     void Update()
     {
         transform.Translate(Vector3.forward * Time.deltaTime * bulletSpeed);

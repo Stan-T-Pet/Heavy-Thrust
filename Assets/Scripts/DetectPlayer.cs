@@ -12,13 +12,11 @@ public class DetectPlayer : MonoBehaviour
     private float rateOfFire;
     public float shootingRange = 100.0f; //Range within the enemy detects the player
 
-    // Start is called before the first frame update
-    void Start()
+       void Start()
     {
         
     }
 
-    // Update is called once per frame
     void Update()
     {
 
