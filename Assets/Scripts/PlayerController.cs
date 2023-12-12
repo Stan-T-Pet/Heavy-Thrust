@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour
 
     //Palyer boundary
     private float speed = 25.0f; //player speed
-    public float xRange = 75.0f;
+    public float xRange = 150.0f;
     public float ascentSpeed = 20.0f;
 
     // Leaning

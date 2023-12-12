@@ -14,7 +14,7 @@ public class SpawnManager : MonoBehaviour
     public GameObject[] enemySpawnPoints;
 
     //Spawn interval in seconds
-    private float spawnInterval = 2.5f;
+    private int spawnInterval = 3;
 
     //Current spawn count
     private int spawnCount = 0;
@@ -30,7 +30,9 @@ public class SpawnManager : MonoBehaviour
     void Start()
     {
         //function repeats to spawn enemies at regular intervals
+        spawnDelay = Mathf.Min(spawnDelay, spawnInterval);
         InvokeRepeating("SpawnEnemy", spawnDelay, spawnInterval);
+
     }
 
     void Update()
