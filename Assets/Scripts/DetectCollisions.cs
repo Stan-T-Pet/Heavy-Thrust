@@ -8,7 +8,7 @@ public class DetectCollisions : MonoBehaviour
     private AudioSource audioSource;
     public AudioClip playerBulletCollisionSound;
     public AudioClip enemyCollisionSound;
-
+    
     void Start()
     {
         //get the AudioSource component attached to the same GameObject
@@ -25,22 +25,23 @@ public class DetectCollisions : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             //Player collision logic here
-            SceneManager.LoadScene("Lose"); //End of round Load "Lose " scene
+            SceneManager.LoadScene("Lose"); //End of round load "Lose " scene
 
         }
-        else if (other.gameObject.CompareTag("PlayerBullet"))
+        else if (other.gameObject.CompareTag("BS-Enemy") || other.gameObject.CompareTag("BS-Bullet"))
         {
             //when player bullet collides play sound
             PlayCollisionSound(playerBulletCollisionSound);
+            Destroy(gameObject);
         }
         else if (other.gameObject.CompareTag("Enemy"))
         {
             //when enemy bullet collides play sound
             PlayCollisionSound(enemyCollisionSound);
-        }
 
-        //Destroy the collided object in all cases
-        Destroy(gameObject);
+            //Destroy the collided object
+            Destroy(gameObject);
+        }
     }
 
     private void PlayCollisionSound(AudioClip sound)

@@ -221,7 +221,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 267414337}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: SceneSoundEffects, Assembly-CSharp
         m_MethodName: PlayMenuBtnClick
         m_Mode: 1
@@ -430,17 +430,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 75101367}
   m_CullTransparentMesh: 1
---- !u!114 &267414337 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5355802755702837713, guid: b8b22b6d4e518c045bc45bbccb0f0301, type: 3}
-  m_PrefabInstance: {fileID: 1656443715}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 064b19ed6e4756f4ba13d2611c37095b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &394779990
 GameObject:
   m_ObjectHideFlags: 0
@@ -813,7 +802,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 267414337}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: SceneSoundEffects, Assembly-CSharp
         m_MethodName: PlayMenuBtnClick
         m_Mode: 1
@@ -1214,7 +1203,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 267414337}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: SceneSoundEffects, Assembly-CSharp
         m_MethodName: PlayMenuBtnClick
         m_Mode: 1
@@ -1713,6 +1702,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SoundSource
       objectReference: {fileID: 0}
+    - target: {fileID: 5355802755702837713, guid: b8b22b6d4e518c045bc45bbccb0f0301, type: 3}
+      propertyPath: BGM
+      value: 
+      objectReference: {fileID: 8300000, guid: d0196213020431d4687bdc7efae71aaf, type: 3}
     - target: {fileID: 5355802755702837714, guid: b8b22b6d4e518c045bc45bbccb0f0301, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -1757,7 +1750,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 5355802755702837715, guid: b8b22b6d4e518c045bc45bbccb0f0301, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: d0196213020431d4687bdc7efae71aaf, type: 3}
+    m_RemovedComponents:
+    - {fileID: 5355802755702837713, guid: b8b22b6d4e518c045bc45bbccb0f0301, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: b8b22b6d4e518c045bc45bbccb0f0301, type: 3}
 --- !u!1 &1673488208
 GameObject:

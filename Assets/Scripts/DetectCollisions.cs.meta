@@ -3,7 +3,9 @@ guid: a5ee826096a27004ebeee38e48ea7f1f
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - playerBulletCollisionSound: {fileID: 8300000, guid: eb72808d303a60840a74a7fc6b3606fe, type: 3}
+  - enemyCollisionSound: {fileID: 8300000, guid: 7e759641d224d68478c1fcb71687d390, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

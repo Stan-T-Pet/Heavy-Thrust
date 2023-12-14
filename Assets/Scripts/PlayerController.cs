@@ -1,4 +1,7 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -11,7 +14,7 @@ public class PlayerController : MonoBehaviour
 
     //Palyer boundary
     private float speed = 25.0f; //player speed
-    public float xRange = 150.0f;
+    public float xRange;
     public float ascentSpeed = 20.0f;
 
     // Leaning
@@ -74,6 +77,7 @@ public class PlayerController : MonoBehaviour
     private void CheckBounds()
     {
         //keep player's position to stay within the specified xRange
+        xRange = 53.0f;
         float xLimit = Mathf.Clamp(transform.position.x, -xRange, xRange);
 
         //prevent player from going below 0 on the y-axis
