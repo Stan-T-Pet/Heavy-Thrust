@@ -45,7 +45,7 @@ GameObject:
   - component: {fileID: 721006456}
   - component: {fileID: 2710916100203228762}
   - component: {fileID: 6784172619985119747}
-  - component: {fileID: -2638705333007403186}
+  - component: {fileID: 7063835412835093124}
   - component: {fileID: 3359513276655376467}
   m_Layer: 0
   m_Name: Player
@@ -172,7 +172,7 @@ MonoBehaviour:
   leanSpeed: 5
   projectilePrefab: {fileID: 8111618749066783694, guid: e8c165629eea2254983555cf8170d43f, type: 3}
   shootingPoint: {fileID: 103647235}
---- !u!114 &-2638705333007403186
+--- !u!114 &7063835412835093124
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

@@ -11,8 +11,9 @@ public class PlayerController : MonoBehaviour
     public float mouseSensitivity = 100.0f;
 
     // Boundary specifications
-    private float speed = 10.0f; // Starting speed
-    public float xRange = 20.0f;
+    private float speed = 20.0f; // Starting speed
+    
+    private Vector3 boundarySize = new Vector3(60, 50, 50); // The size of the boundaries in each axis
     public float ascentSpeed = 5.0f; // Speed for vertical movement
 
     // Leaning
@@ -29,13 +30,14 @@ public class PlayerController : MonoBehaviour
     {
         // Cache the Rigidbody component for better performance
         rigBod = GetComponent<Rigidbody>();
+        
     }
 
     private void Update()
     {
+         CheckBounds();
         HandleMouseInput();
         HandleLeaningInput();
-        //CheckBounds();
         HandleMovementInput();
     }
 
@@ -72,12 +74,20 @@ public class PlayerController : MonoBehaviour
         // Apply lean rotation around z-axis
         transform.localRotation = Quaternion.Euler(transform.localRotation.eulerAngles.x, transform.localRotation.eulerAngles.y, transform.localRotation.eulerAngles.z + currentLean);
     }
-
+     
     private void CheckBounds()
     {
-        // Clamp the player's position to stay within the specified xRange
-        float clampedX = Mathf.Clamp(transform.position.x, -xRange, xRange);
-        transform.position = new Vector3(clampedX, transform.position.y, transform.position.z);
+       
+    // Get the player's current position
+    Vector3 currentPosition = transform.position;
+
+    // Clamp the position within the specified boundaries
+    currentPosition.x = Mathf.Clamp(currentPosition.x, -boundarySize.x, boundarySize.x);
+    currentPosition.y = Mathf.Clamp(currentPosition.y, -boundarySize.y, boundarySize.y);
+    currentPosition.z = Mathf.Clamp(currentPosition.z, -boundarySize.z, boundarySize.z);
+
+    // Apply the clamped position back to the player
+    transform.position = currentPosition;
     }
 
     private void HandleMovementInput()
