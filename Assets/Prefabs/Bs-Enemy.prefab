@@ -12,13 +12,13 @@ GameObject:
   - component: {fileID: 784852141628691262}
   - component: {fileID: 1669854799535305142}
   - component: {fileID: 6976894685996578183}
-  - component: {fileID: 134487761352875940}
   - component: {fileID: 9074791517714607674}
   - component: {fileID: 2086117564172300520}
   - component: {fileID: 3956346628823075423}
+  - component: {fileID: 6401880412290736807}
   m_Layer: 0
   m_Name: Bs-Enemy
-  m_TagString: Untagged
+  m_TagString: EnemyBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -101,18 +101,6 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &134487761352875940
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3293415893601809196}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a5ee826096a27004ebeee38e48ea7f1f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &9074791517714607674
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -154,3 +142,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &6401880412290736807
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3293415893601809196}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5ee826096a27004ebeee38e48ea7f1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerHitSound: {fileID: 8300000, guid: eb72808d303a60840a74a7fc6b3606fe, type: 3}
+  enemyHitSound: {fileID: 8300000, guid: 7e759641d224d68478c1fcb71687d390, type: 3}
+  playerDeathSound: {fileID: 8300000, guid: cb2fbc8c5e56a914f8c77eb229747d3d, type: 3}
+  playerLives: 5

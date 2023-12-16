@@ -148,7 +148,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5355802755702837714, guid: b8b22b6d4e518c045bc45bbccb0f0301, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 35.48583
+      value: 72.5
       objectReference: {fileID: 0}
     - target: {fileID: 5355802755702837714, guid: b8b22b6d4e518c045bc45bbccb0f0301, type: 3}
       propertyPath: m_LocalPosition.z
@@ -189,6 +189,23 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 5355802755702837713, guid: b8b22b6d4e518c045bc45bbccb0f0301, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: b8b22b6d4e518c045bc45bbccb0f0301, type: 3}
+--- !u!1 &36662385 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5355802755702837708, guid: b8b22b6d4e518c045bc45bbccb0f0301, type: 3}
+  m_PrefabInstance: {fileID: 36662384}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &36662386
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 36662385}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5ee826096a27004ebeee38e48ea7f1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &331556240
 GameObject:
   m_ObjectHideFlags: 0
@@ -225,7 +242,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.36, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -56562.64, y: 17461.492}
+  m_AnchoredPosition: {x: -56562.668, y: 17461.492}
   m_SizeDelta: {x: -583.35986, y: -855}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &331556242
@@ -717,7 +734,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Kills
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1043,6 +1060,7 @@ MonoBehaviour:
   - {fileID: 1266770759}
   - {fileID: 365880286}
   - {fileID: 1298691876}
+  killCount: 0
 --- !u!224 &2103027820 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5271134192811204579, guid: cfbc259d99bdf204c8b096fb206c6447, type: 3}

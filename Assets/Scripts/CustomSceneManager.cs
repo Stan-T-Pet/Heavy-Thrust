@@ -20,8 +20,7 @@ public class CustomSceneManager : MonoBehaviour
         {
             // Restart the current level
             RestartCurrentLevel();
-        }
-        else
+        }else
         {
             // Load "Level1" and add to the history
             AddToHistory("Level1");
@@ -47,12 +46,12 @@ public class CustomSceneManager : MonoBehaviour
         SceneManager.LoadScene("Level3");
     }
 
-    private void RestartCurrentLevel()
+    public void RestartCurrentLevel()
     {
         SceneManager.LoadScene(currentLevel);
     }
 
-    private void LoadPreviousLevel()
+    public void LoadPreviousLevel()
     {
         if (sceneHistory.Count > 1)
         {

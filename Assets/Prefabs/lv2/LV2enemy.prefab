@@ -12,13 +12,13 @@ GameObject:
   - component: {fileID: 4424941506143624536}
   - component: {fileID: 3471118043963398692}
   - component: {fileID: 5671622879031035011}
-  - component: {fileID: 6831030603128005002}
   - component: {fileID: 6405671006461221162}
   - component: {fileID: 3251616490844505888}
   - component: {fileID: 1077830537}
+  - component: {fileID: 290379103}
   m_Layer: 0
   m_Name: LV2enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -107,20 +107,6 @@ MonoBehaviour:
   bulletPos: {fileID: 5476641860024561430}
   player: {fileID: 1822314352297193582, guid: bea1cd96f875a4b4099ddb332c3b028b, type: 3}
   shootingRange: 100
---- !u!114 &6831030603128005002
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1822314352297193582}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a5ee826096a27004ebeee38e48ea7f1f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerBulletCollisionSound: {fileID: 0}
-  enemyCollisionSound: {fileID: 0}
 --- !u!136 &6405671006461221162
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -162,6 +148,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8913ee6eac1dfb94093cccaed19135b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &290379103
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1822314352297193582}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5ee826096a27004ebeee38e48ea7f1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerHitSound: {fileID: 8300000, guid: eb72808d303a60840a74a7fc6b3606fe, type: 3}
+  enemyHitSound: {fileID: 8300000, guid: 7e759641d224d68478c1fcb71687d390, type: 3}
+  playerDeathSound: {fileID: 8300000, guid: cb2fbc8c5e56a914f8c77eb229747d3d, type: 3}
+  playerLives: 5
 --- !u!1 &1842244390239904585
 GameObject:
   m_ObjectHideFlags: 0

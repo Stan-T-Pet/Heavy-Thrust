@@ -14,10 +14,10 @@ public class PlayerController : MonoBehaviour
 
     //Palyer boundary
     private float speed = 25.0f; //player speed
-    public float xRange;
+    private Vector3 boundarySize = new Vector3(60, 50, 50);
     public float ascentSpeed = 20.0f;
 
-    // Leaning
+    //Leaning
     public float leanAngle = 15.0f; //Max angle for leaning
     public float leanSpeed = 5.0f;
 
@@ -76,18 +76,17 @@ public class PlayerController : MonoBehaviour
 
     private void CheckBounds()
     {
-        //keep player's position to stay within the specified xRange
-        xRange = 53.0f;
-        float xLimit = Mathf.Clamp(transform.position.x, -xRange, xRange);
+       
+    // Get the player's current position
+    Vector3 currentPosition = transform.position;
 
-        //prevent player from going below 0 on the y-axis
-        float yLimit = Mathf.Max(transform.position.y, 0.0f);
+    // Clamp the position within the specified boundaries
+    currentPosition.x = Mathf.Clamp(currentPosition.x, -boundarySize.x, boundarySize.x);
+    currentPosition.y = Mathf.Clamp(currentPosition.y, -boundarySize.y, boundarySize.y);
+    currentPosition.z = Mathf.Clamp(currentPosition.z, -boundarySize.z, boundarySize.z);
 
-        transform.position = new Vector3(xLimit, yLimit, transform.position.z);
-
-        //keep player's position to stay within the specified xRange
-        float clampedX = Mathf.Clamp(transform.position.x, -xRange, xRange);
-        transform.position = new Vector3(clampedX, transform.position.y, transform.position.z);
+    // Apply the clamped position back to the player
+    transform.position = currentPosition;
     }
 
     private void HandleMovementInput()

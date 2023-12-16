@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
+using UnityEngine.UI;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -20,38 +21,32 @@ public class SpawnManager : MonoBehaviour
     private int spawnCount = 0;
 
     //Spawn delay in seconds
-    private int spawnDelay = 2;
+    //private int spawnDelay = 2;
 
     //Maximum number of enemies to spawn on level
     private int spawnMax = 5;
 
     //Current enemy kill count
-    private int killCount = 0;
+    public int killCount = 0;
+    //Text killCountText;
+
     void Start()
     {
         //function repeats to spawn enemies at regular intervals
-        spawnDelay = Mathf.Min(spawnDelay, spawnInterval);
-        InvokeRepeating("SpawnEnemy", spawnDelay, spawnInterval);
+        //spawnDelay = Mathf.Min(spawnDelay, spawnInterval);
+        InvokeRepeating("SpawnEnemy", spawnInterval, spawnInterval);
+        //killCountText = GetComponent<Text>();
 
     }
 
     void Update()
     {
-        //Checking if the spawn count is less than max
-        if (spawnCount < spawnMax)
-        {
-            //Check if the kill count has reached the max
-            if (killCount >= spawnMax)
-            {
-                //victory message
-                UnityEngine.Debug.Log("End of Round - Victory!");
-            }
-            else
-            { 
-                spawnCount++;
+       // killCountText = "Kills: " + killCount;
 
-                SpawnEnemy();//Spawn an enemy
-            }
+          //Check if the kill count has reached the max
+        if (killCount == spawnMax)
+        {
+            SceneManager.LoadScene("Victory");
         }
     }
 
@@ -68,20 +63,16 @@ public class SpawnManager : MonoBehaviour
 
         //spawn the enemy prefab at the spawn position
         Instantiate(enemyPrefab, spawnPos, Quaternion.identity);
+        spawnCount++;
+
     }
 
-    //when an enemy is killed add to kill counter
+    //when  an enemy is killed add to kill counter
     public void EnemyKilled()
     {
-        
         killCount++;//add to count
-        UnityEngine.Debug.Log("Enemies Killed: " + killCount);//msg
-
-        // Check if the kill counter is  max
-        if (killCount >= spawnMax)
-        {
-            UnityEngine.Debug.Log("Victory");
-            SceneManager.LoadScene("Victory"); // End of round, load the next scene
-        }
+        UnityEngine.Debug.Log("Enemies Killed: " + killCount);
     }
+
+
 }
