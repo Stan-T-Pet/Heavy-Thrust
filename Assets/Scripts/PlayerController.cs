@@ -24,6 +24,7 @@ public class PlayerController : MonoBehaviour
     //Projectile object reference for instantiation
     public GameObject projectilePrefab;
     public Transform shootingPoint; //Shooting point reference
+    int bulletFired; 
 
     private Rigidbody rigBod;
 
@@ -55,6 +56,7 @@ public class PlayerController : MonoBehaviour
         {
             //handle rightclick logic here
             Instantiate(projectilePrefab, shootingPoint.position, shootingPoint.rotation);
+            bulletFired++;
         }
     }
 

@@ -1,78 +1,90 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Diagnostics;
-using UnityEngine.UI;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
+using System.Diagnostics;
 
 public class SpawnManager : MonoBehaviour
 {
-    //Enemy prefabs array
     public GameObject[] enemyPrefabs;
-
-    //Enemy spawn locations array
     public GameObject[] enemySpawnPoints;
+    private string[] sceneNames = {"Level1", "Level2", "Level3" };
 
-    //Spawn interval in seconds
-    private int spawnInterval = 3;
-
-    //Current spawn count
-    private int spawnCount = 0;
-
-    //Spawn delay in seconds
-    //private int spawnDelay = 2;
-
-    //Maximum number of enemies to spawn on level
-    private int spawnMax = 5;
-
-    //Current enemy kill count
-    public int killCount = 0;
-    //Text killCountText;
+    private float spawnInterval = 3.0f;
+    private int spawnCount;
+    public int spawnMax;
+    public int killCount;
+    public TextMeshProUGUI killCounterText;
 
     void Start()
     {
-        //function repeats to spawn enemies at regular intervals
-        //spawnDelay = Mathf.Min(spawnDelay, spawnInterval);
-        InvokeRepeating("SpawnEnemy", spawnInterval, spawnInterval);
-        //killCountText = GetComponent<Text>();
+        string currentSceneName = SceneManager.GetActiveScene().name;
 
+        if (currentSceneName == sceneNames[0]) // Level1
+        {
+            spawnMax = 5;
+        }
+        else if (currentSceneName == sceneNames[1]) // Level2
+        {
+            spawnMax = 10;
+        }
+        else if (currentSceneName == sceneNames[2]) // Level3
+        {
+            spawnMax = int.MaxValue; // Infinite spawn on Level3
+        }
+
+        //Start spawning enemies repeatedly after an initial delay
+        InvokeRepeating("SpawnEnemy", spawnInterval, spawnInterval);
     }
 
     void Update()
     {
-       // killCountText = "Kills: " + killCount;
-
-          //Check if the kill count has reached the max
-        if (killCount == spawnMax)
+        if (killCount >= spawnMax)
         {
-            SceneManager.LoadScene("Victory");
+            UnityEngine.Debug.Log("Victory");
+            killCount = 0;
+            killCounterText.text = "Kills: " + killCount;
+            SceneManager.LoadScene("Victory"); // Load the Victory scene when enough enemies have been killed
+        }
+        else
+        {
+            // Reset the text when the scene changes
+            string currentSceneName = SceneManager.GetActiveScene().name;
+            if (currentSceneName != sceneNames[0] && currentSceneName != sceneNames[1] && currentSceneName != sceneNames[2])
+            {
+                killCount = 0;
+                killCounterText.text = "Kills: " + killCount;
+            }
         }
     }
 
-    //method to spawn an enemies
+
     void SpawnEnemy()
     {
-        //Select random enemy prefab
-        int enemyIndex = UnityEngine.Random.Range(0, enemyPrefabs.Length);
-        GameObject enemyPrefab = enemyPrefabs[enemyIndex];
+        if (spawnCount < spawnMax)
+        {
+            int enemyIndex = UnityEngine.Random.Range(0, enemyPrefabs.Length);
+            GameObject selectedEnemyPrefab = enemyPrefabs[enemyIndex];
 
-        //find nxt enemy spawn point
-        int spawnPointIndex = UnityEngine.Random.Range(0, enemySpawnPoints.Length);
-        Vector3 spawnPos = enemySpawnPoints[spawnPointIndex].transform.position;
+            int spawnPointIndex = UnityEngine.Random.Range(0, enemySpawnPoints.Length);
+            Vector3 spawnPos = enemySpawnPoints[spawnPointIndex].transform.position;
 
-        //spawn the enemy prefab at the spawn position
-        Instantiate(enemyPrefab, spawnPos, Quaternion.identity);
-        spawnCount++;
-
+            Instantiate(selectedEnemyPrefab, spawnPos, Quaternion.identity);
+            spawnCount++;
+            UnityEngine.Debug.Log("Current spawn count: " + spawnCount);
+        }
     }
 
-    //when  an enemy is killed add to kill counter
     public void EnemyKilled()
     {
-        killCount++;//add to count
-        UnityEngine.Debug.Log("Enemies Killed: " + killCount);
+        killCount++;
+        UpdateKillCounterUI();
     }
 
-
+    void UpdateKillCounterUI()
+    {
+        if (killCounterText != null)
+        {
+            killCounterText.text = "Kills: " + killCount.ToString();
+        }
+    }
 }

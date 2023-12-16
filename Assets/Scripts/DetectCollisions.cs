@@ -12,7 +12,6 @@ public class DetectCollisions : MonoBehaviour
             if (other.gameObject.CompareTag("EnemyBullet")) // Example tag for enemy bullets
             {
                 SceneManager.LoadScene("Lose");
-                // Optionally, destroy the player or perform other actions
             }
         }
 
